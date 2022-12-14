@@ -4,11 +4,7 @@ import Megha from '../Meghamenu/Megha'
 const Navbar = () => {
   return (
     <div>
-       
-      
         <Megha />
-        
-      
     </div>
   )
 }
