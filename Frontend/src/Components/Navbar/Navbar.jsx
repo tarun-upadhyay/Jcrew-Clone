@@ -1,8 +1,15 @@
 import React from 'react'
+import Megha from '../Meghamenu/Megha'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div>
+       
+      
+        <Megha />
+        
+      
+    </div>
   )
 }
 
