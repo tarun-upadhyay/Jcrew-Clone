@@ -21,4 +21,16 @@ const menproductSchema = mongoose.Schema({
 })
 const MenModel = mongoose.model("men", menproductSchema)
 
-module.exports = { WomenModel, MenModel}
+
+const kidproductSchema = mongoose.Schema({
+    title:{type: String, required: true},
+    img: [],
+    desc: {type: String, required: true},
+    original_price: {type: Number, require: true},
+    sale_price: {type: Number},
+    size: [],
+    
+})
+const KidModel = mongoose.model("kid", kidproductSchema)
+
+module.exports = { WomenModel, MenModel, KidModel}

@@ -1,18 +1,17 @@
 const express = require("express");
 const productRouter = express.Router();
 
-const { WomenModel, MenModel } = require("../models/productModel");
+const { WomenModel, MenModel, KidModel } = require("../models/productModel");
 
 productRouter.get("/women", async (req, res) => {
   try {
-    const products = await WomenModel.find(params);
+    const products = await WomenModel.find({});
     res.send(products);
   } catch (err) {
     console.log(err);
     res.send({ err: "something went wrong" });
   }
 });
-
 
 productRouter.get("/women/:productID", async (req, res) => {
   const { productID } = req.params;
@@ -35,37 +34,36 @@ productRouter.get("/women/:productID", async (req, res) => {
   }
 });
 
-
-
-productRouter.post("/women", async (req, res) => {
-
+productRouter.post("/women/add", async (req, res) => {
   const payload = req.body;
   const product = new WomenModel(payload);
   await product.save();
   res.send({ msg: "Added Succeffully" });
 });
 
-productRouter.patch("/women/update/:productID", async (req, res)=>{
-  const  productID  = req.params.productID;
-  const payload = req.body;
-try{
-const query = await WomenModel.findByIdAndUpdate({_id:productID}, payload);
-res.send({msg:"upadted succesflly"})
-}catch(err){
-  res.send({err:err})
-console.log(err)
-}
-})
-productRouter.delete("/women/delete/:productID", async (req, res)=>{
+productRouter.patch("/women/update/:productID", async (req, res) => {
   const productID = req.params.productID;
-  try{
-    await WomenModel.findByIdAndDelete({_id:productID});
-    res.send({msg: "deleted succesffyll"})
-  }catch(err){
-    res.send({err: 'something went worng'})
+  const payload = req.body;
+  try {
+    const query = await WomenModel.findByIdAndUpdate(
+      { _id: productID },
+      payload
+    );
+    res.send({ msg: "upadted succesflly" });
+  } catch (err) {
+    res.send({ err: err });
+    console.log(err);
   }
-})
-
+});
+productRouter.delete("/women/delete/:productID", async (req, res) => {
+  const productID = req.params.productID;
+  try {
+    await WomenModel.findByIdAndDelete({ _id: productID });
+    res.send({ msg: "deleted succesffyll" });
+  } catch (err) {
+    res.send({ err: "something went worng" });
+  }
+});
 
 ////////////////////////////////////////////////////////////////////
 productRouter.get("/men/:productID", async (req, res) => {
@@ -80,7 +78,7 @@ productRouter.get("/men/:productID", async (req, res) => {
     }
   } else {
     try {
-      const products = await  MenModel.find({});
+      const products = await MenModel.find({});
       res.send(products);
     } catch (err) {
       console.log(err);
@@ -90,19 +88,9 @@ productRouter.get("/men/:productID", async (req, res) => {
 });
 
 productRouter.get("/men", async (req, res) => {
+  
   try {
-
-    //const products = await MenModel.find({title:/Hea/});
-
     const products = await MenModel.find({});
-
-
-productRouter.get("/men", async (req, res) => {
-  const params = req.query;
-
-  try {
-    const products = await MenModel.find(params);
-
 
     res.send(products);
   } catch (err) {
@@ -111,37 +99,95 @@ productRouter.get("/men", async (req, res) => {
   }
 });
 
-
-
-productRouter.post("/men", async (req, res) => {
-
+productRouter.post("/men/add", async (req, res) => {
   const payload = req.body;
   const product = new MenModel(payload);
   await product.save();
   res.send({ msg: "Added Succeffully" });
 });
 
-
-productRouter.patch("/men/update/:productID", async (req, res)=>{
-  const  productID  = req.params.productID;
-  const payload = req.body;
-try{
-const query = await MenModel.findByIdAndUpdate({_id:productID}, payload);
-res.send({msg:"upadted succesflly"})
-}catch(err){
-  res.send({err:err})
-console.log(err)
-}
-})
-
-productRouter.delete("/men/delete/:productID", async (req, res)=>{
+productRouter.patch("/men/update/:productID", async (req, res) => {
   const productID = req.params.productID;
-  try{
-    await MenModel.findByIdAndDelete({_id:productID});
-    res.send({msg: "deleted succesffyll"})
-  }catch(err){
-    res.send({err: 'something went worng'})
+  const payload = req.body;
+  try {
+    const query = await MenModel.findByIdAndUpdate({ _id: productID }, payload);
+    res.send({ msg: "upadted succesflly" });
+  } catch (err) {
+    res.send({ err: err });
+    console.log(err);
   }
-})
+});
 
-module.exports = { productRouter }
+productRouter.delete("/men/delete/:productID", async (req, res) => {
+  const productID = req.params.productID;
+  try {
+    await MenModel.findByIdAndDelete({ _id: productID });
+    res.send({ msg: "deleted succesffyll" });
+  } catch (err) {
+    res.send({ err: "something went worng" });
+  }
+});
+///////////////////ccccccccHILDREN////////////////
+productRouter.get("/kid/:productID", async (req, res) => {
+  const { productID } = req.params;
+  if (productID) {
+    try {
+      const products = await KidModel.find({ _id: productID });
+      res.send(products);
+    } catch (err) {
+      console.log(err);
+      res.send({ err: "something went wrong" });
+    }
+  } else {
+    try {
+      const products = await KidModel.find({});
+      res.send(products);
+    } catch (err) {
+      console.log(err);
+      res.send({ err: "something went wrong" });
+    }
+  }
+});
+
+productRouter.get("/kid", async (req, res) => {
+  
+  try {
+    const products = await KidModel.find({});
+
+    res.send(products);
+  } catch (err) {
+    console.log(err);
+    res.send({ err: "something went wrong" });
+  }
+});
+
+productRouter.post("/kid/add", async (req, res) => {
+  const payload = req.body;
+  const product = new KidModel(payload);
+  await product.save();
+  res.send({ msg: "Added Succeffully" });
+});
+
+productRouter.patch("/kid/update/:productID", async (req, res) => {
+  const productID = req.params.productID;
+  const payload = req.body;
+  try {
+    const query = await KidModel.findByIdAndUpdate({ _id: productID }, payload);
+    res.send({ msg: "upadted succesflly" });
+  } catch (err) {
+    res.send({ err: err });
+    console.log(err);
+  }
+});
+
+productRouter.delete("/kid/delete/:productID", async (req, res) => {
+  const productID = req.params.productID;
+  try {
+    await KidModel.findByIdAndDelete({ _id: productID });
+    res.send({ msg: "deleted succesffyll" });
+  } catch (err) {
+    res.send({ err: "something went worng" });
+  }
+});
+
+module.exports = { productRouter };
