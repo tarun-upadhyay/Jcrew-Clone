@@ -5,8 +5,15 @@ const { WomenModel, MenModel, KidModel } = require("../models/productModel");
 
 productRouter.get("/women", async (req, res) => {
   try {
-    const products = await WomenModel.find({});
-    res.send(products);
+    if (req.query) {
+      let val = req.query.title;
+      val = new RegExp(val);
+      const products = await WomenModel.find({ title: val });
+      res.send(products);
+    } else {
+      const products = await WomenModel.find();
+      res.send(products);
+    }
   } catch (err) {
     console.log(err);
     res.send({ err: "something went wrong" });
@@ -88,11 +95,16 @@ productRouter.get("/men/:productID", async (req, res) => {
 });
 
 productRouter.get("/men", async (req, res) => {
-  
   try {
-    const products = await MenModel.find({});
-
-    res.send(products);
+    if (req.query) {
+      let val = req.query.title;
+      val = new RegExp(val);
+      const products = await MenModel.find({ title: val });
+      res.send(products);
+    } else {
+      const products = await MenModel.find({});
+      res.send(products);
+    }
   } catch (err) {
     console.log(err);
     res.send({ err: "something went wrong" });
@@ -150,11 +162,16 @@ productRouter.get("/kid/:productID", async (req, res) => {
 });
 
 productRouter.get("/kid", async (req, res) => {
-  
   try {
-    const products = await KidModel.find({});
-
-    res.send(products);
+    if (req.query) {
+      let val = req.query.title;
+      val = new RegExp(val);
+      const products = await KidModel.find({ title: val });
+      res.send(products);
+    } else {
+      const products = await KidModel.find({});
+      res.send(products);
+    }
   } catch (err) {
     console.log(err);
     res.send({ err: "something went wrong" });
