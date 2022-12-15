@@ -40,6 +40,26 @@ productRouter.post("/women/add", async (req, res) => {
   await product.save();
   res.send({ msg: "Added Succeffully" });
 });
+productRouter.patch("/women/update/:productID", async (req, res)=>{
+  const  productID  = req.params.productID;
+  const payload = req.body;
+try{
+const query = await WomenModel.findByIdAndUpdate({_id:productID}, payload);
+res.send({msg:"upadted succesflly"})
+}catch(err){
+  res.send({err:err})
+console.log(err)
+}
+})
+productRouter.delete("/women/delete/:productID", async (req, res)=>{
+  const productID = req.params.productID;
+  try{
+    await WomenModel.findByIdAndDelete({_id:productID});
+    res.send({msg: "deleted succesffyll"})
+  }catch(err){
+    res.send({err: 'something went worng'})
+  }
+})
 ////////////////////////////////////////////////////////////////////
 productRouter.get("/men/:productID", async (req, res) => {
   const { productID } = req.params;
@@ -64,7 +84,7 @@ productRouter.get("/men/:productID", async (req, res) => {
 
 productRouter.get("/men", async (req, res) => {
   try {
-    const products = await MenModel.find({});
+    const products = await MenModel.find({title:/Hea/});
     res.send(products);
   } catch (err) {
     console.log(err);
@@ -90,17 +110,16 @@ res.send({msg:"upadted succesflly"})
 console.log(err)
 }
 })
-
-productRouter.patch("/women/update/:productID", async (req, res)=>{
-  const  productID  = req.params.productID;
-  const payload = req.body;
-try{
-const query = await WomenModel.findByIdAndUpdate({_id:productID}, payload);
-res.send({msg:"upadted succesflly"})
-}catch(err){
-  res.send({err:err})
-console.log(err)
-}
+productRouter.delete("/men/delete/:productID", async (req, res)=>{
+  const productID = req.params.productID;
+  try{
+    await MenModel.findByIdAndDelete({_id:productID});
+    res.send({msg: "deleted succesffyll"})
+  }catch(err){
+    res.send({err: 'something went worng'})
+  }
 })
+
+
 
 module.exports = { productRouter };
