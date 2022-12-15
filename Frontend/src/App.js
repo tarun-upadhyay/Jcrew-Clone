@@ -1,14 +1,16 @@
 import React from 'react'
-import Footer from './Components/Footer/Footer'
-import Mainroute from './Components/Mainroute/Mainroute'
-import Navbar from './Components/Navbar/Navbar'
+// import Footer from './Components/Footer/Footer'
+// import Mainroute from './Components/Mainroute/Mainroute'
+// import Navbar from './Components/Navbar/Navbar'
+import Singlepage from "./Pages/Singlepage/Singlepage";
 
 const App = () => {
   return (
    <>
-   <Navbar/>
+   {/* <Navbar/>
    <Mainroute/>
-   <Footer/>
+   <Footer/> */}
+   <Singlepage/>
    </>
   )
 }
