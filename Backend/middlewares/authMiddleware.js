@@ -10,8 +10,8 @@ try{
     }
     const token = req.headers.authorization.split(" ")[1]
     if(!token){
-        res.status(401)
-        throw new Error("Not authorized, Please login")
+        res.status(401).json({message:"Not authorized, Please login"})
+        
     }
 
     //Verify token
@@ -21,15 +21,15 @@ try{
     const user= await User.findById(verified.id).select("-password")
 
     if(!user){
-        res.status(401)
-        throw new Error("user not found...")
+        res.status(401).json({message:"user not found..."})
+        
     }
     req.user=user
     next()
 
 } catch (err){
-    res.status(401)
-    throw new Error("Not authorized, Please login")
+    res.status(401).json({message:"Not authorized, Please login"})
+   
 }
 })
 
