@@ -16,21 +16,21 @@ const generateToken=(id)=>{
   
          //Validation
          if(!name ||!email || !password){
-          res.status(400)
-          throw new Error("Please fill in all required fields")
+          res.status(400).json({message:"Please fill in all required fields",status:"400"})
+          
          }
   
          if(password.length<6){
-          res.status(400)
-          throw new Error("Password must be upto 6 characters")
+          res.status(400).json({message:"Password must be upto 6 characters",status:"400"})
+        
          }
   
          //check if user email already exists
         const userExists= await User.findOne({email})
   
         if(userExists){
-          res.status(400)
-          throw new Error("Email is already been register")
+          res.status(400).json({message:"Email is already been register",status:"400"})
+          
         }
   
 
@@ -48,24 +48,24 @@ const generateToken=(id)=>{
   //generate token 
   const token=generateToken(user._id);
   
-  //Send http-only cookie to client/frontend
-  //res.cookie("what will the name of the cookie you want to send to frontend",token,{order property: how we want to save this cookie})
-  res.cookie("token",token,{
+  // //Send http-only cookie to client/frontend
+  // //res.cookie("what will the name of the cookie you want to send to frontend",token,{order property: how we want to save this cookie})
+  // res.cookie("token",token,{
  
-    httpOnly:true,
-    expires:new Date(Date.now()+1000*86400),  //1day
+  //   httpOnly:true,
+  //   expires:new Date(Date.now()+1000*86400),  //1day
     
-  })
+  // })
   
         if(user){
           const{_id,name,email}=user
           res.status(201).json({
-              _id,name,email
-          })
+              _id,name,email,token
+              })
   
         }else{
-          res.status(400)
-          throw new Error("Invalid user data")
+          res.status(400).json({message:"Invalid user data",status:"400"})
+        
         }
   
   
@@ -79,16 +79,16 @@ const loginUser=asyncHandler(async (req,res)=>{
   console.log(email)
     //validate request
     if(!email || !password){
-      res.status(400)
-      throw new Error("Please enter email and password")
+      res.status(400).json({message:"Please enter email and password",status:400})
+      
     }
   
     //check if user exists
     const user =await User.findOne({email})
   
     if(!user){
-      res.status(400)
-      throw new Error("User not found, please signup")
+      res.status(400).json({message:"User not found, please signup",status:400})
+     
     }
     //user exists, check if password is correct
   
@@ -99,22 +99,22 @@ const loginUser=asyncHandler(async (req,res)=>{
   
   //Send http-only cookie to client/frontend
   //res.cookie("what will the name of the cookie you want to send to frontend",token,{order property: how we want to save this cookie})
-  res.cookie("token",token,{
+  // res.cookie("token",token,{
   
-    httpOnly:true,
-    expires:new Date(Date.now()+1000*86400),  //1day
+  //   httpOnly:true,
+  //   expires:new Date(Date.now()+1000*86400),  //1day
     
   
-  })
+  // })
   
     if(user && passwordIsCorrect){
       const{_id,name,email}=user
       res.status(200).json({
-          _id,name,email
+          _id,name,email,token
       })
     }else{
-      res.status(400)
-      throw new Error("Invalid email or password")
+      res.status(400).json({message:"Invalid email or password",status:400})
+     
     }
   
   })
@@ -136,21 +136,17 @@ const updateUser=asyncHandler(async (req,res)=>{
     const user=await User.findById(req.user._id)
   
     if(user){
-      const{name,email,photo,phone,bio}=user
+      const{name,email}=user
       user.email=email
       user.name=req.body.name|| name
-      user.phone=req.body.phone|| phone
-      user.bio=req.body.bio|| bio
-      user.photo=req.body.photo|| photo
+    
   
       const updatedUser= await user.save()
   res.status(200).json({
     _id:updatedUser._id,
     name:updatedUser.name,
     email:updatedUser.email,
-    photo:updatedUser.photo,
-    phone:updatedUser.phone,
-    bio:updatedUser.bio
+  
   })
     } else{
       res.status(404)
