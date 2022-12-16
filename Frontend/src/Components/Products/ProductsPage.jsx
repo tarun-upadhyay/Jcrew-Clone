@@ -7,25 +7,16 @@ const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
-  let componentMounted = true;
-
-  useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
   
-      if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
-        setLoading(false);
-        console.log(filter);
-      }
-      return () => {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        componentMounted = false;
-      };
-    };
+  const getProducts = () => {
+   fetch("https://real-red-blackbuck-toga.cyclic.app/products/men").then((res)=>res.json()).then((res)=>setData(res)).catch((err)=>{
+    console.log(err)
+   })
+    
+  };
+  useEffect(() => {
     getProducts();
+    
   }, []);
 
   const Loading = () => {
@@ -87,13 +78,13 @@ const ProductsPage = () => {
             Electronics
           </button>
         </div>
-        {filter.map((product) => {
+        {data.map((product) => {
           return (
             <>
               <div className="col-md-3 mb-4">
                 <div className="card h-100 text-center p-4" key={product.id}>
                   <img
-                    src={product.image}
+                    src={product.img[0]}
                     className="card-img-top"
                     alt={product.title}
                     height="250px"
