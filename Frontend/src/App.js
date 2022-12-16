@@ -9,7 +9,10 @@ const App = () => {
   return (
    <>
    {/* <Signin /> */}
-   <Signup />
+   <Navbar/>
+   {/* <Signup /> */}
+   <Mainroute/>
+
    </>
   )
 }
