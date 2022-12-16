@@ -1,15 +1,12 @@
 import React from 'react'
-import Footer from './Components/Footer/Footer'
-import Mainroute from './Components/Mainroute/Mainroute'
-import Navbar from './Components/Navbar/Navbar'
+import ProductPage from './Components/Products/ProductPage'
 
 const App = () => {
   return (
-   <>
-   <Navbar/>
-   <Mainroute/>
-   <Footer/>
-   </>
+   <div className='App'>
+   <ProductPage/>
+   <br/>
+   </div>
   )
 }
 
