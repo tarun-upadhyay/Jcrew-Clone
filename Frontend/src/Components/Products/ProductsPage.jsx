@@ -9,7 +9,7 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(false);
   
   const getProducts = () => {
-   fetch("https://real-red-blackbuck-toga.cyclic.app/products/men").then((res)=>res.json()).then((res)=>setData(res)).catch((err)=>{
+   fetch("https://real-red-blackbuck-toga.cyclic.app/products/women").then((res)=>res.json()).then((res)=>setData(res)).catch((err)=>{
     console.log(err)
    })
     
