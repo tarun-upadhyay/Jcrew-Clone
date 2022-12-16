@@ -8,8 +8,8 @@ import Signup from './Pages/Signup/Signup'
 const App = () => {
   return (
    <>
-   <Signin />
-   {/* <Signup /> */}
+   {/* <Signin /> */}
+   <Signup />
    </>
   )
 }
