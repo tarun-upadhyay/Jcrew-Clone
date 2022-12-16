@@ -13,7 +13,7 @@ body {
 }
 
 * {
-  margin-bottom: 0.5%;
+  margin-bottom: 0.1%;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -183,7 +183,7 @@ nav .wrapper {
   top: 10px;
 }
 
-@media (max-width: 970px) {
+/* @media (max-width: 970px) {
   .wrapper .btn {
     display: block;
   }
@@ -203,7 +203,7 @@ nav .wrapper {
     transition: all 0.3s ease;
   }
   /* custom scroll bar */
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
@@ -244,11 +244,11 @@ nav .wrapper {
   #showDrop:checked ~ .drop-menu,
   #showMega:checked ~ .mega-box {
     max-height: 100%;
-  }
+  } */
   /* .nav-links .desktop-item {
     display: none;
   } */
-  .nav-links .mobile-item {
+  /* .nav-links .mobile-item {
     display: block;
     color: #f2f2f2;
     font-size: 20px;
@@ -286,10 +286,10 @@ nav .wrapper {
   .mega-box .content .row {
     width: 100%;
     margin-bottom: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.08); */
     /* border: 5px solid green; */
     /* justify-content: center; */
-  }
+  /* }
   .mega-box .content .row:nth-child(1),
   .mega-box .content .row:nth-child(2) {
     border-top: 0px;
@@ -303,8 +303,8 @@ nav .wrapper {
   }
   .content .row header {
     font-size: 19px;
-  }
-}
+  } */
+/* } */
 nav input {
   display: none;
 }
