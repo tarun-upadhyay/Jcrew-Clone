@@ -53,7 +53,7 @@ const Signup = () => {
         <div className='w-full flex flex-col max-w-[550px]'>
           <div className='w-full flex flex-col mb-10'>
             <h3 className='text-2xl font-bold mb-2'>Sign Up</h3>
-            <p className='text-sm mb-2'>Welcome Back! Please enter your details.</p>
+            <p className='text-sm mb-2'>Welcome! Please enter your details.</p>
           </div>
           <div className='w-full flex flex-col'>
           <input type="text"
