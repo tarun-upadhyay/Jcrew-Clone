@@ -7,7 +7,11 @@ const generateToken=(id)=>{
    
     return jwt.sign({id},process.env.JWT_SECRET,{expiresIn:"1d"})
   }
-  
+  //get user
+  const getUser=asyncHandler(async (req,res)=>{
+    const users= await User.find()
+    res.status(200).send(users)
+  })
   // register user
   const registerUser = asyncHandler(
       async (req, res) => {
@@ -97,15 +101,7 @@ const loginUser=asyncHandler(async (req,res)=>{
     //generate token 
   const token=generateToken(user._id);
   
-  //Send http-only cookie to client/frontend
-  //res.cookie("what will the name of the cookie you want to send to frontend",token,{order property: how we want to save this cookie})
-  // res.cookie("token",token,{
-  
-  //   httpOnly:true,
-  //   expires:new Date(Date.now()+1000*86400),  //1day
-    
-  
-  // })
+
   
     if(user && passwordIsCorrect){
       const{_id,name,email}=user
@@ -119,16 +115,7 @@ const loginUser=asyncHandler(async (req,res)=>{
   
   })
 
-  //logout user
-const logout = asyncHandler(async (req,res)=>{
-    res.cookie("token","",{
-     
-      httpOnly:true,
-      expires:new Date(0),  
-      
-    })
-  return res.status(200).json({message: "successfully logged out"})
-  })
+
   //updateUser
 
 const updateUser=asyncHandler(async (req,res)=>{
@@ -187,4 +174,4 @@ const updateUser=asyncHandler(async (req,res)=>{
 
 
 
-      module.exports={registerUser,loginUser,updateUser,changePassword,logout}
+      module.exports={registerUser,loginUser,updateUser,changePassword,getUser}

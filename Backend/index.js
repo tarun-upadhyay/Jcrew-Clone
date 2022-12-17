@@ -5,6 +5,7 @@ const cors=require("cors")
 const connect=require("./config/db")
 const userRoute=require("./routes/userRouter")
 
+
 const {productRouter }  = require("./routes/productRouter")
 const { pr_connection } = require("./config/pr_db")
 const app=express()
@@ -20,8 +21,10 @@ app.use("/products", productRouter)
 //routes middleware
 app.use("/api/users",userRoute)
 
+
+
 app.listen(PORT,async()=>{
-    await pr_connection
-    await connect
+   
+    await connect()
     console.log(`http://localhost:${PORT}`)
 })
