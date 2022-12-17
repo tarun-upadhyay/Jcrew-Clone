@@ -65,14 +65,17 @@ const getCartById=asyncHandler(async (req,res)=>{
     let id=req.user
     const carts= await Cart.findOne({user:id._id})
     
-    res.send(carts.cartItems)
+    res.send(carts)
    
 })
 const deleteCart=asyncHandler(async (req,res)=>{
     let id=req.user
-    const carts= await Cart.findOne({user:id._id})
-    let cartItems=carts.cartItems
-    res.send(cartItems[0].productId)
+    const cart= await Cart.findOne({user:id._id})
+    let cartItems=cart.cartItems
+   const cartItemId=req.body.id
+ 
+res.send("hi")
+  
    
 })
 
