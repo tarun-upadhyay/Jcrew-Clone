@@ -27,7 +27,7 @@ const kidproductSchema = mongoose.Schema({
     img: [],
     desc: {type: String, required: true},
     original_price: {type: Number, require: true},
-    sale_price: {type: Number},
+    sale_pricesale_price: {type: Number},
     size: [],
     
 })

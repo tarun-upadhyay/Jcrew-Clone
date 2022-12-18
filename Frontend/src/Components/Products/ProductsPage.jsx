@@ -59,18 +59,39 @@ const Titlepro = styled.h1`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 0 10px;
+
+@media (min-width: 768px)
+{
+  display: flex;
+  justify-content: space-between;
   padding: 0 70px;
+}
 `;
 
 const DataContainer = styled.div`
   display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
+@media (min-width: 768px)
+{
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, auto);
   grid-gap: 30px;
+}
 `;
 const ContentDisplay = styled.div`
+// @media (min-width: 768px)
+{
   flex: 5;
+}
 `;
+
+// const MainContent = styled.div`
+// border: 3px soild;
+// `
+
 //********************************************/
 
 const ProductsPage = () => {
@@ -296,7 +317,7 @@ const ProductsPage = () => {
                   <ProductCard
                     img={product.img}
                     title={product.title}
-                    desc={product.desc}
+                    // desc={product.desc}
                     originalPrice={product.original_price}
                     size={product.size}
                     salePrice={product.sale_price}
