@@ -5,15 +5,15 @@ import ProductCard from "./ProductCard";
 import axios from "axios";
 import styled from "styled-components";
 
-const Main = styled.div`
+const SideBar = styled.div`
   display: flex;
   flex: 1;
-  background-color: #f7f7f7;
+
   & .displayFilters {
-    flex: 1.4;
-    background-color: white;
+    flex: 1;
     padding-left: 1.5%;
     padding-right: 1.5%;
+    margin-top: 100px;
   }
   & .displayFilters > .productName {
     font-size: 11px;
@@ -50,6 +50,29 @@ const Main = styled.div`
   }
 `;
 
+const Titlepro = styled.h1`
+  margin: 30px auto;
+  font-weight: 800;
+  font-size: 40px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 70px;
+`;
+
+const DataContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 30px;
+`;
+const ContentDisplay = styled.div`
+  flex: 5;
+`;
+//********************************************/
+
 const ProductsPage = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
@@ -81,9 +104,6 @@ const ProductsPage = () => {
         <div className="col-md-3">
           <Skeleton height={350} />
         </div>
-        {/* <div >
-          <Skeleton height={350} />
-        </div> */}
       </>
     );
   };
@@ -94,8 +114,8 @@ const ProductsPage = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <Main>
+    <Container>
+      <SideBar>
         <div className="displayFilters">
           <div className="productName">
             <p>Class</p>
@@ -263,35 +283,32 @@ const ProductsPage = () => {
             <label htmlFor="">Available to order</label>
           </div>
         </div>
-      </Main>
-      <div style={{ flex: 3 }}>
-        <h1>{name}</h1>
-        <div className="container my-5 py-5">
-          <div className="row"></div>
-          <div className="row justify-content-center">
-            {loading ? (
-              <Loading />
-            ) : (
-              <>
-                {data.map((product) => {
-                  return (
-                    <ProductCard
-                      img={product.img}
-                      title={product.title}
-                      desc={product.desc}
-                      originalPrice={product.original_price}
-                      size={product.size}
-                      salePrice={product.sale_price}
-                      key={product._id}
-                    />
-                  );
-                })}
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+      </SideBar>
+      <ContentDisplay>
+        <Titlepro>{name}'s Clothing</Titlepro>
+        <DataContainer>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              {data.map((product) => {
+                return (
+                  <ProductCard
+                    img={product.img}
+                    title={product.title}
+                    desc={product.desc}
+                    originalPrice={product.original_price}
+                    size={product.size}
+                    salePrice={product.sale_price}
+                    key={product._id}
+                  />
+                );
+              })}
+            </>
+          )}
+        </DataContainer>
+      </ContentDisplay>
+    </Container>
   );
 };
 
