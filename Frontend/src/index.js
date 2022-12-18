@@ -10,7 +10,7 @@ import './index.css';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

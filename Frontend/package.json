@@ -18,7 +18,11 @@
     "font-awesome": "^4.7.0",
     "framer-motion": "^7.10.1",
     "react": "^18.2.0",
+<<<<<<< HEAD
     "react-circular-progressbar": "^2.1.0",
+=======
+    "react-bootstrap": "^2.7.0",
+>>>>>>> 7f8e1f4fa450d6013278d45fda2232b977cba6c0
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-loading-skeleton": "^3.1.0",
