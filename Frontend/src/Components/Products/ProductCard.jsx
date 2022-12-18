@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 function ProductCard ({img,title,desc,originalPrice,size,salePrice}) {
   console.log(img,title,desc,originalPrice,size,(salePrice));
   return (
+
     <Card style={{ width: '18rem'}}>
       <Card.Img variant="top" src= {`${img[0]}`} />
       <Card.Body>
@@ -16,6 +17,7 @@ function ProductCard ({img,title,desc,originalPrice,size,salePrice}) {
         <Button colorScheme='blue' mt='-10' style={{width:"100%"}}>Buy</Button>
       </Card.Body>
     </Card>
+
     
   );
 }

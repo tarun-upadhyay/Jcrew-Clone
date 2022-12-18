@@ -21,7 +21,7 @@ const Mainroute = () => {
     <Route path='/singlepage' element={<Singlepage/>}></Route>
     <Route path='/checkout' element={<Checkout/>}></Route>
     <Route path='/signup' element={<Signup/>}></Route>
-    <Route path='/sigin' element={<Signin/>}></Route>
+    <Route path='/signin' element={<Signin/>}></Route>
     <Route path='/admin' element={<Home/>}></Route>
     <Route path='/admin/products' element={<AdminProducts/>}></Route>
     <Route path='*' element={<h1>Page not found</h1>}></Route>
