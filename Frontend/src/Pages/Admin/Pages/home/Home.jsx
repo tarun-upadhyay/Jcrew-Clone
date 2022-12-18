@@ -1,6 +1,9 @@
 import React from 'react'
+import Chart from '../../Components/charts/Chart'
+import Featured from '../../Components/featured/Featured'
 import Nav_admin from '../../Components/Navbar/Nav_admin'
 import Sidebar from '../../Components/Sidebar/Sidebar'
+import Widget from '../../Components/Widget/Widget'
 import "./home.scss"
 const Home = () => {
   return (
@@ -8,7 +11,16 @@ const Home = () => {
        <Sidebar/>
        <div className="homeContainer">
        <Nav_admin/>
-       homeContainer
+       <div className="widgets">
+        <Widget type={"user"}/>
+        <Widget type={"order"}/>
+        <Widget type={"earning"}/>
+        <Widget type={"balance"}/>
+       </div>
+       <div className="charts">
+        <Featured/>
+        <Chart/>
+       </div>
        </div>
     </div>
   )
