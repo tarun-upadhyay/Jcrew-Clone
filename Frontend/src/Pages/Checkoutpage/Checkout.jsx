@@ -52,7 +52,7 @@ const Checkout = () => {
     <p className='text-lg '>Rs <span>2400</span></p>
     </div>
     <div className='w-11/12 m-auto mt-2'>
-    <button className='bg-blue-500  text-white py-2 rounded-md text-xl w-full'>Checkout</button>
+    <button className='bg-blue-500  text-white py-2 rounded-md text-xl w-full mb-2'>Checkout</button>
     </div>
    
   </div>
