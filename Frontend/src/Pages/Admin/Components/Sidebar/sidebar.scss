@@ -1,17 +1,17 @@
-.Sidebar{
+.aSidebar{
   
     flex: 1;
     border-right: 0.5px solid rgb(238, 238, 213);
     min-height: 100vh;
    background-color: white;
-    .top{
+    .atop{
         
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .logo{
+    .alogo{
         font-size: 20px;
         font-weight: bold;
         color: purple;
@@ -21,7 +21,7 @@
         ;
         border: 0.5px solid rgb(238, 238, 213);
     }
-    .center{
+    .acenter{
         padding-left: 10px;
         ul{
             list-style: none;
@@ -44,7 +44,7 @@
                     background-color: #ece8ff;
                     
                 }
-                .icon{
+                .aicon{
                     font-size: 18px;
                     color: #7451f8;
                     margin-right: 4px;
@@ -58,11 +58,11 @@
             }
         }
     }
-    .bottom{
+    .abottom{
         display: flex;
         align-items: center;
         margin: 10px;
-        .colorOption{
+        .acolorOption{
             width: 20px;
             height: 20px;
             border-radius: 5px;

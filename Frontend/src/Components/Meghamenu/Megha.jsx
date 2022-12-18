@@ -19,8 +19,8 @@ const Megha = () => {
             </label>
             <li>
              
-              <label htmlFor="showMega" className="mobile-item">
-                Services
+            <label htmlFor="showMega" className="mobile-item">
+                Sign In
               </label>
               <li>
                 <Link
@@ -30,9 +30,9 @@ const Megha = () => {
                 >
                   Gifts
                 </Link>
-                <input type="checkbox" id="showMega" />
+                {/* <input type="checkbox" id="showMega" /> */}
                 <label htmlFor="showMega" className="mobile-item">
-                  Services
+                  Gifts
                 </label>
 
                 <div className="mega-box">
@@ -78,9 +78,9 @@ const Megha = () => {
               >
                 New
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+                New
               </label>
 
               <div className="mega-box">
@@ -174,9 +174,9 @@ const Megha = () => {
               >
                 Women
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+                Women
               </label>
 
               <div className="mega-box">
@@ -398,9 +398,9 @@ const Megha = () => {
               >
                 Men
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+              Men
               </label>
 
               <div className="mega-box">
@@ -591,9 +591,9 @@ const Megha = () => {
               >
                 Kids
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+              Kids
               </label>
 
               <div className="mega-box">
@@ -848,9 +848,9 @@ const Megha = () => {
               >
                 Cashmere
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+              Cashmere
               </label>
 
               <div className="mega-box">
@@ -898,9 +898,9 @@ const Megha = () => {
               >
                 Home
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+              Home
               </label>
 
               <div className="mega-box">
@@ -973,9 +973,9 @@ const Megha = () => {
               >
                 Stories
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+              Stories
               </label>
 
               <div className="mega-box">
@@ -1074,9 +1074,9 @@ const Megha = () => {
               >
                 Sale
               </Link>
-              <input type="checkbox" id="showMega" />
+              {/* <input type="checkbox" id="showMega" /> */}
               <label htmlFor="showMega" className="mobile-item">
-                Services
+              Sale
               </label>
 
               <div className="mega-box">
