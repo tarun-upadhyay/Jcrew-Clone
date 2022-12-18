@@ -183,34 +183,34 @@ nav .wrapper {
   top: 10px;
 }
 
-/* @media (max-width: 970px) {
+@media (max-width: 970px) {
   .wrapper .btn {
     display: block;
   }
   .wrapper .nav-links {
     position: fixed;
-    height: 100vh;
+    height: auto;
     width: 100%;
-    max-width: 350px;
+    max-width: 180px;
     top: 0;
     left: 0%;
-    background: #242526;
+    background: #f8f6f6;
     display: block;
     padding: 50px 10px;
-    line-height: 50px;
+    line-height: 30px;
     overflow-y: auto;
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 15px 15px rgba(30, 29, 29, 0.925);
     transition: all 0.3s ease;
   }
-  /* custom scroll bar */
-  /* ::-webkit-scrollbar {
+  custom scroll bar
+  ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #242526;
+    background: #010101;
   }
   ::-webkit-scrollbar-thumb {
-    background: #3a3b3c;
+    background: #131414;
   }
   #menu-btn:checked ~ .nav-links {
     left: 0%;
@@ -244,13 +244,13 @@ nav .wrapper {
   #showDrop:checked ~ .drop-menu,
   #showMega:checked ~ .mega-box {
     max-height: 100%;
-  } */
-  /* .nav-links .desktop-item {
+  }
+  .nav-links .desktop-item {
     display: none;
-  } */
-  /* .nav-links .mobile-item {
+  }
+  .nav-links .mobile-item {
     display: block;
-    color: #f2f2f2;
+    color: #1f1e1e;
     font-size: 20px;
     font-weight: 500;
     padding-left: 20px;
@@ -259,7 +259,7 @@ nav .wrapper {
     transition: all 0.3s ease;
   }
   .nav-links .mobile-item:hover {
-    background: #3a3b3c;
+    background: #faf8f8;
   }
   .drop-menu li {
     margin: 0;
@@ -286,10 +286,10 @@ nav .wrapper {
   .mega-box .content .row {
     width: 100%;
     margin-bottom: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08); */
-    /* border: 5px solid green; */
-    /* justify-content: center; */
-  /* }
+    border-top: 1px solid rgba(255, 255, 255, 0.895); 
+     border: 5px solid green; 
+     justify-content: center;
+  }
   .mega-box .content .row:nth-child(1),
   .mega-box .content .row:nth-child(2) {
     border-top: 0px;
@@ -303,8 +303,8 @@ nav .wrapper {
   }
   .content .row header {
     font-size: 19px;
-  } */
-/* } */
+  }
+ 
 nav input {
   display: none;
 }
@@ -318,7 +318,8 @@ nav input {
   text-align: center;
   padding: 0 30px;
 }
-.body-text div {
+ .body-text div {
   font-size: 45px;
   font-weight: 600;
+}
 }
