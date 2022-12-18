@@ -22,7 +22,7 @@ root.render(
     <ChakraProvider>
       <App />
  
-      <App />
+     
     </ChakraProvider>
 
 
