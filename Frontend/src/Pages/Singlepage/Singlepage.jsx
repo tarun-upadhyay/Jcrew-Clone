@@ -6,6 +6,7 @@ import axios from "axios"
 // import fetching from "./test";
 // import {useParams} from "react-router-dom";
 import { BsHeart } from "react-icons/bs"
+import { json, useParams } from "react-router-dom";
 
 
 let images = [
@@ -18,6 +19,7 @@ let images = [
 
 
 const Singlepage = () => {
+const {id,name} = useParams()
 
   const [post, setPost] = useState(null);
   const [myData, setMyData] = useState([]);
@@ -26,9 +28,9 @@ const Singlepage = () => {
   const [customersData, setCustomersData] = useState([]);
 
 
-  const baseURL = "https://real-red-blackbuck-toga.cyclic.app/products/women/639b0ca2d4493d450e39ff58";
+  const baseURL = `https://real-red-blackbuck-toga.cyclic.app/products/${name}/${id}`;
 
-  const baseURL1 = "https://real-red-blackbuck-toga.cyclic.app/products/women";
+  const baseURL1 = `https://real-red-blackbuck-toga.cyclic.app/products/${name}`;
 
   useEffect(() => {
     const getItemsList = async () => {
@@ -37,34 +39,51 @@ const Singlepage = () => {
         images = res.data[0].img;
         setPost(res.data[0].img)
         setMyData(res.data);
-        console.log(res.data);
+      
 
       } catch (err) {
         setIsError(true);
-        console.log(err);
+       
       }
     }
     getItemsList()
   }, []);
 
-  console.log("myData", myData);
+
+  let lsarray = localStorage.getItem("cartPage") || [];
+
+  const addingToLocal = (p)=>{
+  let data =  lsarray;
+  data = JSON.parse(data)
+
+let yes = data.filter((el)=> el._id == p._id)
+if(yes.length>0){
+  alert("Already Present")
+}else{
+  data.push(p)
+  alert("Added To cart succesfully")
+}
+localStorage.setItem('cartPage', JSON.stringify(data))
+
+}
+ 
 
   useEffect(() => {
     const getCustomersData = async () => {
       try {
         const res = await axios.get(baseURL1)
         setCustomersData(res.data);
-        console.log(res.data);
+      
 
       } catch (err) {
         setIsError(true);
-        console.log(err);
+      
       }
     }
     getCustomersData()
   }, []);
 
-  console.log("customer", customersData)
+
 
   const [img, setImg] = useState(images[0]);
 
@@ -196,7 +215,7 @@ const Singlepage = () => {
 
                   <div className="addToCartDiv">
                     <div className="addingtocart">
-                      <button className="addButton">ADDING TO BAG</button>
+                      <button className="addButton" onClick={()=> addingToLocal(product)}>ADDING TO BAG</button>
                     </div>
                     <div className="heartDiv">
                       <button className="addButtonHeart"> <BsHeart /> </button>
