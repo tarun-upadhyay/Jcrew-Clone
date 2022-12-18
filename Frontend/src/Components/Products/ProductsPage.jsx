@@ -210,7 +210,11 @@ const ProductsPage = () => {
                 border: "1px solid",
                 borderRadius: "5px",
                 width: "80%",
+                fontSize:"19px",
+                fontWeight:"500",
+                cursor:"pointer",
                 color: "white",
+                padding: "15px",
                 backgroundColor: "rgb(13,110,253)",
               }}
               onClick={() => {
@@ -228,6 +232,11 @@ const ProductsPage = () => {
                 borderRadius: "5px",
                 width: "80%",
                 color: "white",
+                fontSize:"19px",
+                fontWeight:"500",
+                cursor:"pointer",
+                color: "white",
+                padding: "15px",
                 backgroundColor: "rgb(13,110,253)",
               }}
               onClick={() => {
@@ -335,6 +344,7 @@ const ProductsPage = () => {
           ) : (
             <>
               {data.map((product) => {
+               
                 return (
                   <ProductCard
                     img={product.img}
@@ -344,6 +354,8 @@ const ProductsPage = () => {
                     size={product.size}
                     salePrice={product.sale_price}
                     key={product._id}
+                    id={product._id}
+                    name = {name}
                   />
                 );
               })}
