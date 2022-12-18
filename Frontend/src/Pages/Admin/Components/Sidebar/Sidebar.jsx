@@ -33,7 +33,7 @@ const Sidebar = () => {
           </li>
           <li>
             <LocalShippingIcon className="aicon" />
-            <span>Delivery</span>
+            <span>Products</span>
           </li>
           <p className="atitle">USEFUL</p>
           <li>
