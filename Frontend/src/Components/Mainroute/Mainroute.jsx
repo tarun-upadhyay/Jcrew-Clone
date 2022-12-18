@@ -17,7 +17,7 @@ const Mainroute = () => {
   return (
   <Routes>
     <Route path='/' element={<Homepage/>}></Route>
-    <Route path='/products' element={<ProductsPage/>}></Route>
+   
     <Route path='/products/:name' element={<ProductsPage/>}></Route>
     <Route path='/singlepage/:name/:id' element={<Singlepage/>}></Route>
     <Route path='/checkout' element={<Checkout/>}></Route>
