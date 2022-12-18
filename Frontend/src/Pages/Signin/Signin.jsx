@@ -1,7 +1,7 @@
 import React from 'react'
-
+import {useNavigate,Link} from "react-router-dom"
 const Signin = () => {
-
+  const navigate = useNavigate()
 
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
@@ -13,7 +13,7 @@ const Signin = () => {
           password,
       }
 
-    await fetch("http://localhost:8080/api/users/login",{
+    await fetch("https://pronghorn-tunic.cyclic.app/api/users/login",{
           method : "POST",
           headers: {
               'Content-Type': 'application/json',
@@ -27,6 +27,7 @@ const Signin = () => {
           window.alert(res.message)
          }else{
           window.alert("SignIn Successfull")
+          navigate("/")
          }
           if(res.token){
               localStorage.setItem("usertoken", res.token)
@@ -82,7 +83,7 @@ Sign In
 
         </div>
         <div className='w-full flex items-center justify-center'>
-          <p className='text-sm font-normal text-black'>Don't have an account? <span className='font-bold cursor-pointer underline underline-offset-2'>SignUp</span> </p>
+          <p className='text-sm font-normal text-black'>Don't have an account? <Link to="/signup"> <span className='font-bold cursor-pointer underline underline-offset-2'>SignUp</span> </Link></p>
         </div>
 
         <div>
