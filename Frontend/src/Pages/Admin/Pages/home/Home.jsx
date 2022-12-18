@@ -21,6 +21,11 @@ const Home = () => {
         <Featured/>
         <Chart/>
        </div>
+       <div className="listContainer">
+        <div className="listTilte">
+          Latest Transactions
+        </div>
+       </div>
        </div>
     </div>
   )
