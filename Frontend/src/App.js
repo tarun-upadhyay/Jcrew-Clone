@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import Footer from "./Components/Footer/Footer";
 import Footer1 from "./Components/Footer/Footer1";
@@ -20,6 +21,7 @@ const App = () => {
    </>
   )
 }
+
 
 export default App
 

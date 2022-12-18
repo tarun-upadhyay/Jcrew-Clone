@@ -1,9 +1,9 @@
-.container {
+.fcontainer {
   position: relative;
   width: 50%;
  
 }
-.middle {
+.fmiddle {
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -13,14 +13,14 @@
   -ms-transform: translate(-50%, -50%);
   /* text-align: center; */
 }
-.container:hover .image {
+.fcontainer:hover .fimage {
   opacity: 0.6;
 }
-.container:hover .middle {
+.fcontainer:hover .fmiddle {
   opacity: 1;
 }
 
-.text {
+.ftext {
   background-color: white;
   color: black;
   font-size: 12px;
