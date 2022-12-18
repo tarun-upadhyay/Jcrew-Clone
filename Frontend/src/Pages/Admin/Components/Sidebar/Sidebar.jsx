@@ -11,57 +11,57 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 const Sidebar = () => {
   return (
-    <div className="Sidebar">
-      <div className="top">
-        <span className="logo">ADMIN</span>
+    <div className="aSidebar">
+      <div className="atop">
+        <span className="alogo">J C ADMIN</span>
       </div>
       <hr />
-      <div className="center">
+      <div className="acenter">
         <ul>
-          <p className="title">MAIN</p>
+          <p className="atitle">MAIN</p>
           <li>
-            <DashboardIcon className="icon" />
+            <DashboardIcon className="aicon" />
             <span>Dashboard</span>
           </li>
           <li>
-            <PeopleAltIcon className="icon" />
+            <PeopleAltIcon className="aicon" />
             <span>Users</span>
           </li>
           <li>
-            <AddShoppingCartIcon className="icon"></AddShoppingCartIcon>
+            <AddShoppingCartIcon className="aicon"></AddShoppingCartIcon>
             <span>Orders</span>
           </li>
           <li>
-            <LocalShippingIcon className="icon" />
+            <LocalShippingIcon className="aicon" />
             <span>Delivery</span>
           </li>
-          <p className="title">USEFUL</p>
+          <p className="atitle">USEFUL</p>
           <li>
-            <QueryStatsIcon className="icon" />
+            <QueryStatsIcon className="aicon" />
             <span>Stats</span>
           </li>
           <li>
-            <NotificationsActiveIcon className="icon" />
+            <NotificationsActiveIcon className="aicon" />
             <span>Notifications</span>
           </li>
-          <p className="title">SERVICE</p>
+          <p className="atitle">SERVICE</p>
           <li>
-            <SystemUpdateAltIcon className="icon" />
+            <SystemUpdateAltIcon className="aicon" />
             <span>System Health</span>
           </li>
           <li>
-            <VpnKeyIcon className="icon" />
+            <VpnKeyIcon className="aicon" />
             <span>Logs</span>
           </li>
           <li>
-            <SettingsApplicationsIcon className="icon" />
+            <SettingsApplicationsIcon className="aicon" />
             <span>Settings</span>
           </li>
         </ul>
       </div>
-      <div className="bottom">
-        <div className="colorOption"></div>
-        <div className="colorOption"></div>
+      <div className="abottom">
+        <div className="acolorOption"></div>
+        <div className="acolorOption"></div>
       </div>
     </div>
   );

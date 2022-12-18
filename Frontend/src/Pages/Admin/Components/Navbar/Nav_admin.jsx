@@ -17,7 +17,7 @@ const Nav_admin = () => {
         </div>
         <div className="aitems">
           <div className="aitem">
-            <LanguageOutlinedIcon className="icon" />
+            <LanguageOutlinedIcon className="aicon" />
             English
           </div>
           <div className="aitem">
