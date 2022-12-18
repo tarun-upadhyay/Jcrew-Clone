@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <div className="aSidebar">
       <div className="atop">
-        <span className="alogo">ADMIN</span>
+        <span className="alogo">J C ADMIN</span>
       </div>
       <hr />
       <div className="acenter">
