@@ -1,10 +1,10 @@
 import React from 'react'
-
+import {useNavigate,Link} from "react-router-dom"
 const Signup = () => {
   const [name, setName] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
-
+  const navigate = useNavigate()
   const handleSubmit =async () => {
 
       const payload = {
@@ -13,7 +13,7 @@ const Signup = () => {
           password,
       }
 
-    await fetch("http://localhost:8080/api/users/register",{
+    await fetch("https://pronghorn-tunic.cyclic.app/api/users/register",{
           method : "POST",
           headers: {
               'Content-Type': 'application/json',
@@ -27,12 +27,13 @@ const Signup = () => {
           window.alert(res.message)
          }else{
           window.alert("Signup Successfull")
+          navigate("/")
          }
          
           if(res.token){
               localStorage.setItem("usertoken", res.token)
           }
-         
+      
       })
       .catch((err) => console.log(err))
   }
@@ -84,7 +85,7 @@ Sign Up
 
         </div>
         <div className='w-full flex items-center justify-center'>
-          <p className='text-sm font-normal text-black'>Already have an account? <span className='font-bold cursor-pointer underline underline-offset-2'>SignIn</span> </p>
+          <p className='text-sm font-normal text-black'>Already have an account? <Link to="/signin"> <span className='font-bold cursor-pointer underline underline-offset-2'>SignIn</span> </Link></p>
         </div>
 
         <div>
