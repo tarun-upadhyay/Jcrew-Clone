@@ -17,7 +17,7 @@ body{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     /* border: 1px solid black; */
-    height: 1260px;
+    height: 1200px;
     margin-top: 20px;
 }
 .left{
@@ -79,6 +79,7 @@ body{
     font-size: 18px;
     color:#000000;
     font-weight: bold;
+    margin-top: 9px;
 }
 .productrewiev{
     width: 95px;
@@ -88,6 +89,7 @@ body{
     font-size: 10px;
     color: #666666;
     box-sizing: border-box;
+    margin-top: 22px;
 }
 .productColor{
     color: #666666;
@@ -98,7 +100,7 @@ body{
     margin-top: 15px;
 }
 .allsizes{
-    line-height: 0%;
+    line-height: 10px;
 }
 .allsizesDiv{
    display: flex;
@@ -118,12 +120,13 @@ body{
     font-size: .8125rem;
     line-height: 2.5rem;
     height: 2.5rem;
+    margin-top: 15px;
 }
 .selectDiv{
     width: 150px;
     height: 30px;
     /* border: 1px solid red; */
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .addToCartDiv{
@@ -132,7 +135,7 @@ body{
     /* border: 1px solid black; */
     display: flex;
     justify-content: space-between;
-    margin-top: -12px;
+    margin-top: 12px;
 }
 .addingtocart{
     width: 87%;
@@ -166,9 +169,10 @@ body{
     border: 1px solid #ccc;
     font-size: 20px;
     cursor: pointer;
+    text-align: center;
 }
 .liList{
-    margin-top: -15px;
+    margin-top: 10px;
     line-height: 1.8rem;
 }
 .detailsLi{
@@ -181,10 +185,11 @@ body{
     /* border: 1px solid green; */
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
 }
 .shareImage{
     width: 20px;
-    margin-top: 60%;
+    margin-top: 30%;
 }
 .customerLovediv{
     max-width: 1200px;
