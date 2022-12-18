@@ -6,7 +6,11 @@ import axios from "axios";
 import styled from "styled-components";
 
 const SideBar = styled.div`
-  display: flex;
+
+@media (min-width: 768px){
+
+ 
+display: flex;
   flex: 1;
 
   & .displayFilters {
@@ -48,6 +52,7 @@ const SideBar = styled.div`
     justify-content: space-around;
     margin-bottom: 10%;
   }
+}
 `;
 
 const Titlepro = styled.h1`
@@ -61,36 +66,31 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 0 10px;
 
-@media (min-width: 768px)
-{
-  display: flex;
-  justify-content: space-between;
-  padding: 0 70px;
-}
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 70px;
+  }
 `;
 
 const DataContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
-@media (min-width: 768px)
-{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, auto);
-  grid-gap: 30px;
-}
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 30px;
+  }
 `;
 const ContentDisplay = styled.div`
-// @media (min-width: 768px)
-{
-  flex: 5;
-}
+  // @media (min-width: 768px)
+   {
+    flex: 5;
+  }
 `;
 
-// const MainContent = styled.div`
-// border: 3px soild;
-// `
 
 //********************************************/
 
@@ -99,6 +99,16 @@ const ProductsPage = () => {
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
   const { name } = useParams();
+  const categoryHeading = name[0].toUpperCase() + name.slice(1);
+
+  let [priceState5, setPriceState5] = useState(false);
+  let [priceState6, setPriceState6] = useState(false);
+  let [priceState7, setPriceState7] = useState(false);
+  let [priceState8, setPriceState8] = useState(false);
+  let [priceState9, setPriceState9] = useState(false);
+  let [priceState10, setPriceState10] = useState(false);
+
+  let [results, setResults] = useState(0);
 
   const getProducts = async () => {
     setLoading(true);
@@ -134,34 +144,113 @@ const ProductsPage = () => {
     setFilter(updatedList);
   };
 
+  const pricesort = (x) => {
+    if (x === 1) {
+      setData((prev) => [...prev.sort((a, b) => b.sale_price - a.sale_price)]);
+    } else {
+      setData((prev) => [...prev.sort((a, b) => a.sale_price - b.sale_price)]);
+    }
+  };
+
+  const priceRangeSort = (x) => {
+    if (x === 1) {
+      setPriceState5(!priceState5);
+      setData(data.filter((a) => a.sale_price <= 10000));
+      setResults(data.filter((a) => a.sale_price <= 10000).length);
+    } else if (x === 2) {
+      setPriceState6(!priceState6);
+      setData(
+        data.filter((a) => a.sale_price > 10000 && a.sale_price <= 20000)
+      );
+      setResults(
+        data.filter((a) => a.sale_price > 10000 && a.sale_price <= 20000).length
+      );
+    } else if (x === 3) {
+      setPriceState7(!priceState7);
+      setData(
+        data.filter((a) => a.sale_price > 20000 && a.sale_price <= 30000)
+      );
+      setResults(
+        data.filter((a) => a.sale_price > 20000 && a.sale_price <= 30000).length
+      );
+    } else if (x === 4) {
+      setPriceState8(!priceState8);
+      setData(
+        data.filter((a) => a.sale_price > 30000 && a.sale_price <= 40000)
+      );
+      setResults(
+        data.filter((a) => a.sale_price > 30000 && a.sale_price <= 40000).length
+      );
+    } else if (x === 5) {
+      setPriceState9(!priceState9);
+      setData(
+        data.filter((a) => a.sale_price > 40000 && a.sale_price <= 50000)
+      );
+      setResults(
+        data.filter((a) => a.sale_price > 40000 && a.sale_price <= 50000).length
+      );
+    } else {
+      setPriceState10(!priceState10);
+      setData(data.filter((a) => a.sale_price > 50000));
+      setResults(data.filter((a) => a.sale_price > 50000).length);
+    }
+  };
+
   return (
     <Container>
       <SideBar>
         <div className="displayFilters">
-          <div className="productName">
-            <p>Class</p>
-            <input type="checkbox" checked={""} onChange={() => ""} />
-            <label>Galaxy Z</label>
+          <>
+            <br />
+            <p style={{ fontWeight: "400", fontSize: "22px" }}>Sort by price</p>
+            <br />
+            <p
+              style={{
+                display: "block",
+                border: "1px solid",
+                borderRadius: "5px",
+                width: "80%",
+                color: "white",
+                backgroundColor: "rgb(13,110,253)",
+              }}
+              onClick={() => {
+                pricesort(1);
+              }}
+            >
+              Price : High to Low
+            </p>
             <br />
             <br />
-            <input type="checkbox" checked={""} onChange={() => ""(2)} />
-            <label>Galaxy S</label>
-            <br />
-            <br />
-            <input type="checkbox" checked={""} onChange={() => ""(3)} />
-            <label>Galaxy Note</label>
-            <br />
-            <br />
-            <input type="checkbox" checked={""} onChange={() => ""(4)} />
-            <label>Galaxy A</label>
-          </div>
+            <p
+              style={{
+                display: "block",
+                border: "1px solid",
+                borderRadius: "5px",
+                width: "80%",
+                color: "white",
+                backgroundColor: "rgb(13,110,253)",
+              }}
+              onClick={() => {
+                pricesort(1);
+              }}
+            >
+              Price : Low to High
+            </p>
+          </>
+
           <div className="productPrice productName">
-            <p>Price</p>
+            <br />
+            <hr />
+            <br />
+            <p style={{ fontWeight: "400", fontSize: "20px" }}>
+              Filter by price
+            </p>
+            <br />
             <input
               type="checkbox"
               name="productPrice"
-              checked={""}
-              onChange={() => ""(1)}
+              checked={priceState5}
+              onChange={() => priceRangeSort(1)}
             />
             <label htmlFor="">Up to ₹10000</label>
             <br />
@@ -169,8 +258,8 @@ const ProductsPage = () => {
             <input
               type="checkbox"
               name="productPrice"
-              checked={""}
-              onChange={() => ""(2)}
+              checked={priceState6}
+              onChange={() => priceRangeSort(2)}
             />
             <label htmlFor="">₹10000 ~ ₹20000</label>
             <br />
@@ -178,8 +267,8 @@ const ProductsPage = () => {
             <input
               type="checkbox"
               name="productPrice"
-              checked={""}
-              onChange={() => ""(3)}
+              checked={priceState7}
+              onChange={() => priceRangeSort(3)}
             />
             <label htmlFor="">₹20000 ~ ₹30000</label>
             <br />
@@ -187,8 +276,8 @@ const ProductsPage = () => {
             <input
               type="checkbox"
               name="productPrice"
-              checked={""}
-              onChange={() => ""(4)}
+              checked={priceState8}
+              onChange={() => priceRangeSort(4)}
             />
             <label htmlFor="">₹30000 ~ ₹40000</label>
             <br />
@@ -196,8 +285,8 @@ const ProductsPage = () => {
             <input
               type="checkbox"
               name="productPrice"
-              checked={""}
-              onChange={() => ""(5)}
+              checked={priceState9}
+              onChange={() => priceRangeSort(5)}
             />
             <label htmlFor="">₹40000 ~ ₹50000</label>
             <br />
@@ -205,108 +294,41 @@ const ProductsPage = () => {
             <input
               type="checkbox"
               name="productPrice"
-              checked={""}
-              onChange={() => ""(6)}
+              checked={priceState10}
+              onChange={() => priceRangeSort(6)}
             />
             <label htmlFor="">Above ₹50000</label>
-          </div>
-          <div className="productMemory productName">
-            <p>Memory</p>
-            <input
-              type="checkbox"
-              name="productMemory"
-              checked={""}
-              onChange={() => ""(1)}
-            />
-            <label htmlFor="">Up to 32GB</label>
             <br />
             <br />
-            <input
-              type="checkbox"
-              name="productMemory"
-              checked={""}
-              onChange={() => ""(2)}
-            />
-            <label htmlFor="">64GB</label>
+            <p
+              style={{
+                display: "block",
+                border: "1px solid",
+                borderRadius: "5px",
+                width: "52%",
+                color: "white",
+                backgroundColor: "rgb(13,110,253)",
+              }}
+              onClick={() => {
+                getProducts();
+                setResults(data.length);
+                setPriceState5(false);
+                setPriceState6(false);
+                setPriceState7(false);
+                setPriceState8(false);
+                setPriceState9(false);
+                setPriceState10(false);
+              }}
+            >
+              Reset Filters
+            </p>
             <br />
             <br />
-            <input
-              type="checkbox"
-              name="productMemory"
-              checked={""}
-              onChange={() => ""(3)}
-            />
-            <label htmlFor="">128GB</label>
-            <br />
-            <br />
-            <input
-              type="checkbox"
-              name="productMemory"
-              checked={""}
-              onChange={() => ""(4)}
-            />
-            <label htmlFor="">256GB</label>
-            <br />
-            <br />
-            <input
-              type="checkbox"
-              name="productMemory"
-              checked={""}
-              onChange={() => ""(5)}
-            />
-            <label htmlFor="">512GB</label>
-            <br />
-            <br />
-            <input
-              type="checkbox"
-              name="productMemory"
-              checked={""}
-              onChange={() => ""(6)}
-            />
-            <label htmlFor="">1TB</label>
-          </div>
-          <div className="productCamera productName">
-            <p>Camera</p>
-            <input
-              type="checkbox"
-              name="productCamera"
-              checked={""}
-              onChange={() => ""(1)}
-            />
-            <label htmlFor="">~8MP</label>
-            <br />
-            <br />
-            <input
-              type="checkbox"
-              name="productCamera"
-              checked={""}
-              onChange={() => ""(2)}
-            />
-            <label htmlFor="">9~12.9MP</label>
-            <br />
-            <br />
-            <input
-              type="checkbox"
-              name="productCamera"
-              checked={""}
-              onChange={() => ""(3)}
-            />
-            <label htmlFor="">20MP~</label>
-          </div>
-          <div className="productAvailable productName">
-            <p>Availability</p>
-            <input
-              type="checkbox"
-              name="productAvailable"
-              checked={""}
-              onChange={() => ""()}
-            />
-            <label htmlFor="">Available to order</label>
           </div>
         </div>
       </SideBar>
       <ContentDisplay>
-        <Titlepro>{name}'s Clothing</Titlepro>
+        <Titlepro>{categoryHeading}'s Clothing</Titlepro>
         <DataContainer>
           {loading ? (
             <Loading />
