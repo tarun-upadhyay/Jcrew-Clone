@@ -12,6 +12,7 @@ import Signup from '../../Pages/Signup/Signup'
 import Singlepage from '../../Pages/Singlepage/Singlepage'
 import ProductsPage from '../Products/ProductsPage'
 import PaymentPage from '../../Pages/Paymentpage/PaymentPage'
+import AddProduct from '../../Pages/Admin/Pages/Products/AddProduct'
 
 const Mainroute = () => {
   return (
@@ -28,6 +29,7 @@ const Mainroute = () => {
     <Route path='/sigin' element={<Signin/>}></Route>
     <Route path='/admin' element={<Home/>}></Route>
     <Route path='/admin/products' element={<AdminProducts/>}></Route>
+    <Route path='/admin/addproduct' element={<AddProduct/>}></Route>
     <Route path='*' element={<h1>Page not found</h1>}></Route>
   </Routes>
   )

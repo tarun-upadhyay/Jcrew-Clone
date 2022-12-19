@@ -133,6 +133,9 @@ console.log(send)
       </Select>
       <Link to="/admin">
       <Button colorScheme={"teal"}>Home</Button></Link>
+     <Link to="/admin/addproduct">
+     <Button colorScheme={"purple"}>Add Products</Button>
+     </Link>
         </Flex>
       <Box>
 {

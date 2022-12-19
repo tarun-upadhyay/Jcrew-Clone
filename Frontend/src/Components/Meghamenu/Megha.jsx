@@ -15,8 +15,10 @@ const Megha = () => {
           </div> */}
           <ul className="nav-links" id={hover ? "navs__links" : ""}>
             <Link to={'/'}>
-            <li>
-                <Image cursor={'pointer'} w={'50%'} h='70%' src="https://i.imgur.com/REetHxL.jpg"/>
+            <li >
+             <h3 id="Navlog" style={{fontWeight:"bolder", fontSize:"18px",marginRight:"60px" }}>
+             Urban Crew
+             </h3>
               </li>
               </Link>
             <label className="btn cancel-btn" htmlFor="cancel-btn">

@@ -35,8 +35,10 @@ const Singlepage = () => {
   useEffect(() => {
     const getItemsList = async () => {
       try {
+    
         const res = await axios.get(baseURL)
         images = res.data[0].img;
+      
         setPost(res.data[0].img)
         setMyData(res.data);
 
@@ -53,9 +55,12 @@ const Singlepage = () => {
   let lsarray = localStorage.getItem("cartPage") || [];
 
   const addingToLocal = (p) => {
-    let data = lsarray;
-    data = JSON.parse(data)
-    let yes = data.filter((el) => el._id === p._id)
+    let data = []
+  if(lsarray.length>0){
+
+     data = JSON.parse(lsarray)
+  }
+    let yes = data.filter((el) => el._id == p._id)
     if (yes.length > 0) {
       alert("Already Present")
     } else {
@@ -289,20 +294,21 @@ const Singlepage = () => {
         <h3 className="productPrice">Customers Also Love</h3>
         <div className="customerLoveMainProductDiv">
 
-          {customersData.map((product) => {
+          {customersData.map((product,index) => {
 
             const { _id, sale_price, title, img } = product;
 
             return (
-
-              <div className="customerLoveMainProductDiv-1" key={_id}>
-                <img style={{ width: "100%", height: "100%" }} src={img} alt={title} />
-                <div className="quickShopButtonDiv">
-                  <button className="quickShopButton">QUICK SHOP</button>
-                </div>
-                <span style={{ marginTospanp: "0%", color: "1px solid #000000" }}>{title}</span>
-                <p style={{ marginTop: "1%", color: "1px solid #000000" }}> INR {sale_price}</p>
+            
+              index <= 6 ?   <div className="customerLoveMainProductDiv-1" key={_id}>
+              <img style={{ width: "100%", height: "100%" }} src={img} alt={title} />
+              <div className="quickShopButtonDiv">
+                <button className="quickShopButton">QUICK SHOP</button>
               </div>
+              <span style={{ marginTospanp: "0%", color: "1px solid #000000" }}>{title}</span>
+              <p style={{ marginTop: "1%", color: "1px solid #000000" }}> INR {sale_price}</p>
+            </div> : ''
+            
             )
           })}
 

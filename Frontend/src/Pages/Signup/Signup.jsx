@@ -1,7 +1,9 @@
 import React from 'react'
-import {useNavigate,Link} from "react-router-dom"
+import {useNavigate,Link, Navigate} from "react-router-dom"
 const Signup = () => {
   const [name, setName] = React.useState("")
+  const [ loading, setLoading ] = React.useState(false)
+  
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const navigate = useNavigate()
@@ -12,7 +14,7 @@ const Signup = () => {
           email,
           password,
       }
-
+setLoading(true)
     await fetch("https://pronghorn-tunic.cyclic.app/api/users/register",{
           method : "POST",
           headers: {
@@ -20,24 +22,28 @@ const Signup = () => {
             },
           body : JSON.stringify(payload)
       })
-      .then((res) => res.json())
       .then((res) => {
-         
+        res.json()
+        setLoading(false)
+        navigate("/signin")
+      })
+      .then((res) => {
+        
          if(res.status==400){
           window.alert(res.message)
          }else{
           window.alert("Signup Successfull")
           navigate("/")
-         }
+        }
          
           if(res.token){
-              localStorage.setItem("usertoken", res.token)
+            localStorage.setItem("usertoken", res.token)
           }
-      
+          
       })
       .catch((err) => console.log(err))
-  }
-
+    }
+  
 
   return (
     <div className='w-full h-screen flex items-start'>
@@ -77,7 +83,7 @@ const Signup = () => {
   <p className='text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2'>Forget Password</p>
 </div>
 <div className='w-full flex flex-col'>
-  <button onClick={handleSubmit} className='w-full bg-[#060606] text-white rounded-md p-2 my-2 text-center flex items-center justify-center'>
+  <button onClick={handleSubmit} disabled={loading} className='w-full bg-[#060606] text-white rounded-md p-2 my-2 text-center flex items-center justify-center'>
 Sign Up
   </button>
 </div>
