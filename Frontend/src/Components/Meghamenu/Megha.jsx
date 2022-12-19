@@ -1,7 +1,7 @@
 import React from "react";
 import "./megamenu.css";
 import { Link } from "react-router-dom";
-
+import { Image } from "@chakra-ui/react";
 const Megha = () => {
   const [hover, setHover] = React.useState(false);
   return (
