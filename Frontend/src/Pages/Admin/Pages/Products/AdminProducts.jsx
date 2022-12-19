@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   Box,
-  Container,
+  useToast,
   Flex,
   Heading,
   TableContainer,
@@ -12,7 +12,7 @@ import {
   Td,
   TableCaption,
   Select,  useDisclosure,
-  Thead,
+  Thead,PopoverBody,PopoverHeader,PopoverCloseButton,PopoverArrow,Popover,PopoverTrigger,PopoverContent,
   Button,Modal, ModalOverlay,ModalHeader,
   Tfoot,ModalContent,
   Image, ModalCloseButton,FormControl,Input, ModalBody,FormLabel,
@@ -23,54 +23,102 @@ import { Link } from "react-router-dom";
 let initState
 const AdminProducts = () => {
   const [title, setTitle] = useState("");
-  const [ img, setImg] = useState([]);
+ const [ page, SetPage ] = useState(1)
   const [img1, setImg1 ] = useState("")
   const [img2, setImg2 ] = useState("")
   const [img3, setImg3 ] = useState("")
   const [img4, setImg4 ] = useState("")
   const [original_price, setOriginal_price] = useState("")
-  const [ desc, setDesc ] = useState("")
+  const toast = useToast()
+  const [ type, setType ] = useState("women")
   const [ sale_price, setSale_price ] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure()
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
   const [data, setData] = React.useState([]);
+  const [ search, setSearch]  = useState("")
   const [ loading, setLoading ] = React.useState(false)
+
   React.useEffect(() => {
     setLoading(true)
-    fetch("https://real-red-blackbuck-toga.cyclic.app/products/women")
+    fetch(`https://real-red-blackbuck-toga.cyclic.app/products/${type}?title=${search}&page_no=${page}`)
       .then((res) => res.json())
       .then((res) => {
         setData(res)
        
       setLoading(false)
       }).catch(()=> setLoading(true));
-  }, []);
+  }, [type,search,page]);
   const handleSubmit = (onClose)=>{
 onClose();
-let send = {
-  title :""
+initState.title = title;
+initState.sale_price = sale_price;
+initState.original_price = original_price;
+initState.img[0] = img1
+if(initState.img[1]){
+  initState.img[1] = img2
 }
-console.log(title.length>0)
-if(title.length<0){
-  send.title = initState.title
+if(initState.img[2]){
+initState.img[2] =img3
 }
-console.log(send)
+if(initState.img[3]){
+  initState.img[3] = img4
+}
+fetch(`https://real-red-blackbuck-toga.cyclic.app/products/${type}/update/${initState._id}`,{
+  method:"PATCH",
+  body: JSON.stringify(initState),
+  headers:{
+    'Content-Type': 'application/json',
+  }
+}).then((res)=> res.json()).then((res)=>  toast({
+  title: 'Product Updated Successfully.',
+  status: 'success',
+  duration: 5000,
+  isClosable: true,
+}) ).catch(err=>console.log(err))
+
   }
   const handleEdit = (data, onOpen)=>{
     initState = data
+    setTitle(initState.title)
+    setSale_price(initState.sale_price)
+    setOriginal_price(initState.original_price)
+    setImg1(initState.img[0])
+    setImg2("")
+    setImg3("")
+    setImg4("")
+    if(initState.img[1]){
+      setImg2(initState.img[1])
+    }
+    if(initState.img[2]){
+      setImg3(initState.img[2])
+    }
+    if(initState.img[3]){
+      setImg4(initState.img[3])
+    }
+    console.log(initState)
     onOpen()
   
 
   }
-
+function handleDelete (id){
+fetch(`https://real-red-blackbuck-toga.cyclic.app/products/${type}/delete/${id}`,{
+  method: "DELETE"
+}).then(()=>  fetch(`https://real-red-blackbuck-toga.cyclic.app/products/${type}?title=${search}`)
+.then((res) => res.json())
+.then((res) => {
+  setData(res)
+ 
+setLoading(false)
+}).catch(()=> setLoading(true)))
+}
 
   const handleChange = ()=>{
 
   }
 
   return (
-    <Box>
+    <Box mt="5">
       <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
@@ -126,37 +174,40 @@ console.log(send)
       </Modal>
         <Flex>
 
-      <Select placeholder="Type" w={"40"}>
-        <option value="option1">Men</option>
+      <Select placeholder="Type" w={"40"} onChange={(e)=> setType(e.target.value)}>
+        <option value="men">Men</option>
         <option value="women">Women</option>
-        <option value="option3">Kids</option>
+        <option value="kid">Kids</option>
       </Select>
+      <Input type="text" placeholder="Search here....." onChange={(e)=>setSearch(e.target.value)} boxShadow="outline" w="150px"ml="10px" mr="10px" />
       <Link to="/admin">
-      <Button colorScheme={"teal"}>Home</Button></Link>
+      <Button colorScheme={"teal"} mr="20px">Home</Button></Link>
      <Link to="/admin/addproduct">
      <Button colorScheme={"purple"}>Add Products</Button>
      </Link>
+     <Button ml={5} colorScheme={"pink"} onClick={()=>{if(page>1){SetPage(page-1)}}} disabled={page==1}>Prev</Button>
+     <Button colorScheme="blue"  ml="5" onClick={()=>{if(page<3){SetPage(page+1)}}} disabled={page==3}>Next</Button>
         </Flex>
       <Box>
 {
   loading ?  <Stack>
-  <Skeleton startColor='green.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='blue.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
-  <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
+  <Skeleton  height='20px' />
   <Skeleton startColor='pink.500' endColor='orange.500' height='20px' />
 </Stack> : <TableContainer>
           <Table variant="striped" colorScheme="blue">
@@ -176,18 +227,34 @@ console.log(send)
               {data.length > 0 &&
                 data.map((el) => {
                   return (
-                    <Tr>
+                    <Tr key={el._id}>
                       <Td>
                         <Image src={el.img[0]} alt="" w="10" />
                       </Td>
                       <Td>{el.title}</Td>
-                      <Td>{el.original_price}</Td>
-                      <Td>{el.sale_price}</Td>
+                      <Td>{el.original_price}.00</Td>
+                      <Td>{el.sale_price}.00</Td>
                       <Td>
                         <Button colorScheme={'yellow'} onClick={()=>handleEdit(el, onOpen)}>Edit</Button>
                       </Td>
                       <Td>
-                        <Button colorScheme={"red"}>Delete</Button>
+
+                      <Popover>
+  <PopoverTrigger>
+                        <Button colorScheme={"pink"}>Delete</Button>
+    
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverArrow />
+    <PopoverCloseButton />
+    <PopoverHeader>Confirmation!</PopoverHeader>
+    <PopoverBody>Are you sure for Deleteing</PopoverBody>
+    <PopoverBody>{el.title}</PopoverBody>
+    <Button  colorScheme={"red"} onClick={()=>handleDelete(el._id)}>Delete</Button>
+    <Button  colorScheme={"green"} >Cancel</Button>
+  </PopoverContent>
+</Popover>
+              
                       </Td>
                     </Tr>
                   );

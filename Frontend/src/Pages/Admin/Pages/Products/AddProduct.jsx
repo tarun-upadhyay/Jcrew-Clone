@@ -8,7 +8,7 @@ import {
   Button,
   Container,
   Flex,
-  VStack,
+  VStack,useToast,
   Heading,
   SimpleGrid,
   GridItem,
@@ -29,7 +29,7 @@ const initState = {
   status: false,
 };
 const AddProduct = () => {
- 
+  const toast = useToast()
 
   const [formData, setFormData] = useState(initState);
   const { title, original_price, img1,img2,img3,img4, category, sale_price} = formData;
@@ -56,16 +56,32 @@ const AddProduct = () => {
     original_price: formData.original_price,
     sale_price: formData.sale_price
    }
-   console.log(category)
+  
    fetch(`https://real-red-blackbuck-toga.cyclic.app/products/${category}/add`,{
     method: "POST",
-    body: JSON.stringify(send)
-   }).then(res=> console.log("Added sucessflly")).catch(er=> console.log(er))
+    body: JSON.stringify(send),
+    headers:{
+      'Content-Type': 'application/json',
+    }
+   }).then(res=>  res.json() ).then(()=>toast({
+    title: 'Product Added.',
+    description: "We've added your product in database.",
+    status: 'success',
+    duration: 5000,
+    isClosable: true,
+  })).catch(er=>   toast({
+    title: 'Failed To add ',
+    description: "Please fill required Informations.",
+    status: 'error',
+    duration: 5000,
+    isClosable: true,
+  }))
     setFormData(initState);
+ 
   };
 
   return (
-    <Box>
+    <Box >
       <Container maxW={"container"} padding="2" bg={"gray.500"}>
         <Flex gap="10" alignContent={"center"} justify="center">
           <Heading color={"white"}>
@@ -83,7 +99,7 @@ const AddProduct = () => {
         justify="center"
         
       >
-        <Flex h="80vh" bg={"green.100"} color={""}>
+        <Flex  bg={"green.100"} color={""}>
           <VStack
             w="full"
             h="full"
