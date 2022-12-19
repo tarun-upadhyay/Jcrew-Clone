@@ -14,6 +14,11 @@ const Megha = () => {
             <input type="radio" name="slide" id="cancel-btn" />
           </div> */}
           <ul className="nav-links" id={hover ? "navs__links" : ""}>
+            <Link to={'/'}>
+            <li>
+                <Image cursor={'pointer'} w={'50%'} h='70%' src="https://i.imgur.com/REetHxL.jpg"/>
+              </li>
+              </Link>
             <label className="btn cancel-btn" htmlFor="cancel-btn">
               <i className="fa fa-times"></i>
             </label>
