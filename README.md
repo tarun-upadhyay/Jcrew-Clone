@@ -18,4 +18,15 @@ J.Crew Group, Inc., is an American multi-brand, multi-channel, specialty retaile
 <h1>Product Page</h1>
 <img src='https://i.postimg.cc/GhGPt86B/Woman.png' />
 
+<br />
+<h1>Single Page</h1>
+<img src='https://i.postimg.cc/qvcGbhLf/Singlepage.png' />
+
+<br />
+<h1>Add to Cart</h1>
+<img src='https://i.postimg.cc/3xykNPkt/Bag.png' />
+
+
+
+
 - ## Link - https://www.jcrew.com/in/
