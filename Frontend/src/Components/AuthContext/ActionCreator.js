@@ -18,3 +18,6 @@ export const loginFailure = (payload) => {
   export const loginAdmin = (payload)=>{
     return { type: "LOGIN_ADMIN", payload}
   }
+  export const handleLogout = ()=>{
+    return { type: "LOGOUT"}
+  }

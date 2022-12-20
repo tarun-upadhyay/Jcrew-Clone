@@ -3,11 +3,15 @@ import "./Nav.css";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AuthContext/AuthcontextProvider";
+import { handleLogout } from "../AuthContext/ActionCreator";
 
 
 const Nav = () => {
  const { state, dispatch } = useContext(AppContext)
 console.log(state)
+const Signout = ()=>{
+  dispatch(handleLogout())
+}
   return (
     <div style={{border:"1px solid black"}}>
        
@@ -18,15 +22,16 @@ console.log(state)
       </div>
      <Link to="/signin">
      
-     <button class="btn">
-     { state.token ? "" : "Signin" }
+     <button class="btn" onClick={Signout} >
+     { state.token ? "Signout" : "Signin" }
      </button>
      </Link>
-      {
-        state.adminAuth ? <Link to="/admin"><button class="btn">Admin</button></Link> : ""
-      }
+      
       <Link to="/checkout">
-      <BiShoppingBag class="icon" />
+        {
+          state.adminAuth ?  <Link to="/admin"><button id="admin" >Admin</button></Link> : <BiShoppingBag class="icon" />
+        }
+      
       </Link>
      
     </div>

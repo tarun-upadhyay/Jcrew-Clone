@@ -24,6 +24,13 @@ export const Reducerfuncntion = (state, action) => {
                 token: action.payload,
                 adminAuth: true
             }
+            case "LOGOUT":
+              return  {
+                    ...state,
+                    isAuth: false,
+                     token:"",
+                  adminAuth: false
+                }
 
       default:
         return state;
