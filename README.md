@@ -10,6 +10,7 @@ J.Crew Group, Inc., is an American multi-brand, multi-channel, specialty retaile
 
 
 <h1>Home Page</h1>
+<p>This is the Home page where you can see all the best cloths products</p>
 <img src='https://i.postimg.cc/PqSHGQHm/Urban-crew.png' />
 
 
