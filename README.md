@@ -10,13 +10,14 @@ J.Crew Group, Inc., is an American multi-brand, multi-channel, specialty retaile
 
 
 <h1>Home Page</h1>
-<p>This is the Home page where you can see all the best cloths products</p>
+<h4>This is the Home page where you can see all the best cloths products</h4>
 <img src='https://i.postimg.cc/PqSHGQHm/Urban-crew.png' />
 
 
 <br />
 
 <h1>Product Page</h1>
+<p>Highest Quality Women's and Men's Clothing and see the entire selection of Children's Clothing, Cashmere Sweaters, Women's Dresses  you can buy from here</p>
 <img src='https://i.postimg.cc/GhGPt86B/Woman.png' />
 
 <br />
