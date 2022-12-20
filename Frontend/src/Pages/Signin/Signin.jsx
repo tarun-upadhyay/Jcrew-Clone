@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {useNavigate,Link} from "react-router-dom"
+import { loginAdmin, loginSuccess } from '../../Components/AuthContext/ActionCreator'
+import { AppContext } from '../../Components/AuthContext/AuthcontextProvider'
 const Signin = () => {
   const navigate = useNavigate()
-
+const { state, dispatch } = useContext(AppContext)
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
 
@@ -30,7 +32,16 @@ const Signin = () => {
           navigate("/")
          }
           if(res.token){
+            if(email==="admin@admin.com" && password==="Admin123#"){
+             console.log("yes")
+              dispatch(loginAdmin(res.token))
+            }else{
+              localStorage.setItem("adminAuth", false)
+            }
               localStorage.setItem("usertoken", res.token)
+              dispatch(loginSuccess(res.token))
+          }else{
+            localStorage.setItem("usertoken","")
           }
          
       })

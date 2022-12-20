@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Nav.css";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { AppContext } from "../AuthContext/AuthcontextProvider";
+
+
 const Nav = () => {
-  let token  = localStorage.getItem("userToken")
-  token = JSON.parse(token)
-  const [ login, setLogin ] = useState(true)
-  if(token) setLogin(false)
+ const { state, dispatch } = useContext(AppContext)
+console.log(state)
   return (
     <div style={{border:"1px solid black"}}>
        
@@ -18,10 +19,12 @@ const Nav = () => {
      <Link to="/signin">
      
      <button class="btn">
-     { login ? "" : "Signin" }
+     { state.token ? "" : "Signin" }
      </button>
      </Link>
-      
+      {
+        state.adminAuth ? <Link to="/admin"><button class="btn">Admin</button></Link> : ""
+      }
       <Link to="/checkout">
       <BiShoppingBag class="icon" />
       </Link>
