@@ -24,9 +24,9 @@ const { state, dispatch } = useContext(AppContext)
       })
       .then((res) => res.json())
       .then((res) => {
-        
+       
         if(res.status==400){
-          window.alert(res.message)
+          window.alert(res.response)
          }else{
           window.alert("SignIn Successfull")
           navigate("/")

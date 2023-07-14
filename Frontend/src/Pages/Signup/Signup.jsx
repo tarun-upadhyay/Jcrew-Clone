@@ -15,26 +15,23 @@ const Signup = () => {
           password,
       }
 
-    await fetch("https://comfortable-tick-necklace.cyclic.app/user/signup",{
-          method : "POST",
-          headers: {
-              'Content-Type': 'application/json',
-            },
-          body : JSON.stringify(payload)
-      })
-      .then((res) => {
-        res.json()
-        setLoading(false)
-        navigate("/signin")
-      })
-      .then((res) => {
-        
-         if(res.status==400){
-          window.alert(res.message)
-         }else{
-          window.alert("Signup Successfull")
-          navigate("/")
-        }
+  await fetch("https://comfortable-tick-necklace.cyclic.app/user/signup",{
+    method : "POST",
+    headers: {
+        'Content-Type': 'application/json',
+      },
+    body : JSON.stringify(payload)
+})
+.then((res) => res.json())
+.then((res) => {
+ 
+  if(res.status==400){
+    window.alert(res.response)
+    navigate("/signin")
+   }else{
+    window.alert("Signup Successfull")
+    navigate("/")
+   }
          
           if(res.token){
             localStorage.setItem("usertoken", res.token)
