@@ -19,7 +19,7 @@ let images = [
 
 
 const Singlepage = () => {
-const {id,name} = useParams()
+  const { id, name } = useParams()
 
   const [post, setPost] = useState(null);
   const [myData, setMyData] = useState([]);
@@ -35,15 +35,17 @@ const {id,name} = useParams()
   useEffect(() => {
     const getItemsList = async () => {
       try {
+    
         const res = await axios.get(baseURL)
         images = res.data[0].img;
+      
         setPost(res.data[0].img)
         setMyData(res.data);
-      
+
 
       } catch (err) {
         setIsError(true);
-       
+
       }
     }
     getItemsList()
@@ -52,32 +54,34 @@ const {id,name} = useParams()
 
   let lsarray = localStorage.getItem("cartPage") || [];
 
-  const addingToLocal = (p)=>{
-  let data =  lsarray;
-  data = JSON.parse(data)
+  const addingToLocal = (p) => {
+    let data = []
+  if(lsarray.length>0){
 
-let yes = data.filter((el)=> el._id == p._id)
-if(yes.length>0){
-  alert("Already Present")
-}else{
-  data.push(p)
-  alert("Added To cart succesfully")
-}
-localStorage.setItem('cartPage', JSON.stringify(data))
+     data = JSON.parse(lsarray)
+  }
+    let yes = data.filter((el) => el._id == p._id)
+    if (yes.length > 0) {
+      alert("Already Present")
+    } else {
+      data.push(p)
+      alert("Added To cart succesfully")
+    }
+    localStorage.setItem('cartPage', JSON.stringify(data))
 
-}
- 
+  }
+
 
   useEffect(() => {
     const getCustomersData = async () => {
       try {
         const res = await axios.get(baseURL1)
         setCustomersData(res.data);
-      
+
 
       } catch (err) {
         setIsError(true);
-      
+
       }
     }
     getCustomersData()
@@ -115,7 +119,7 @@ localStorage.setItem('cartPage', JSON.stringify(data))
 
       <span style={{ marginLeft: "45%", cursor: "pointer" }} >Have a question? We can help.</span>
 
-      <hr style={{ marginTop: "40px" }} />
+      <hr style={{ marginTop: "18px" }} />
 
       <div className="container">
 
@@ -170,7 +174,7 @@ localStorage.setItem('cartPage', JSON.stringify(data))
                 <h2 className="productTitle">{title}</h2>
                 <span className="productDesc">{desc}</span>
 
-                <div>
+                <div style={{ display: "flex" }}>
                   <img className="productrewiev" src="https://jcrew.ugc.bazaarvoice.com/1706redes-en_us/5_0/5/rating.png" alt="rewiewStart" />
                   <a className="anchorrewiev" href="https://www.jcrew.com/in/p/BN922?color_name=black&N=4&NUM_ITEMS=1&cartId=33bbe48d78aaeb2564ff5f505b&mode=edit&colorProductCode=BN922"> 1 REVIEW</a>
                 </div>
@@ -215,7 +219,7 @@ localStorage.setItem('cartPage', JSON.stringify(data))
 
                   <div className="addToCartDiv">
                     <div className="addingtocart">
-                      <button className="addButton" onClick={()=> addingToLocal(product)}>ADDING TO BAG</button>
+                      <button className="addButton" onClick={() => addingToLocal(product)}>ADDING TO BAG</button>
                     </div>
                     <div className="heartDiv">
                       <button className="addButtonHeart"> <BsHeart /> </button>
@@ -261,7 +265,7 @@ localStorage.setItem('cartPage', JSON.stringify(data))
                 </div>
 
                 <h3 className="productPrice">How warm is this coat?</h3>
-                <div style={{ width: "90%" }}>
+                <div style={{ width: "90%", marginTop: "10px" }}>
                   <img style={{ width: "100%" }} src="https://www.jcrew.com/next-static/images/scales/jcrew/styleWarmth/superwarm.png" alt="" />
                 </div>
 
@@ -284,26 +288,27 @@ localStorage.setItem('cartPage', JSON.stringify(data))
       </div>
 
       {/* --------------------------------- */}
-      <hr style={{ width: "1200px" }} />
+      <hr style={{ width: "1200px", margin: "auto" }} />
 
       <div className="customerLovediv">
         <h3 className="productPrice">Customers Also Love</h3>
         <div className="customerLoveMainProductDiv">
 
-          {customersData.map((product) => {
+          {customersData.map((product,index) => {
 
             const { _id, sale_price, title, img } = product;
 
             return (
-
-              <div className="customerLoveMainProductDiv-1" key={_id}>
-                <img style={{ width: "100%", height: "100%" }} src={img} alt={title} />
-                <div className="quickShopButtonDiv">
-                  <button className="quickShopButton">QUICK SHOP</button>
-                </div>
-                <span style={{ marginTospanp: "0%", color: "1px solid #000000" }}>{title}</span>
-                <p style={{ marginTop: "1%", color: "1px solid #000000" }}> INR {sale_price}</p>
+            
+              index <= 6 ?   <div className="customerLoveMainProductDiv-1" key={_id}>
+              <img style={{ width: "100%", height: "100%" }} src={img} alt={title} />
+              <div className="quickShopButtonDiv">
+                <button className="quickShopButton">QUICK SHOP</button>
               </div>
+              <span style={{ marginTospanp: "0%", color: "1px solid #000000" }}>{title}</span>
+              <p style={{ marginTop: "1%", color: "1px solid #000000" }}> INR {sale_price}</p>
+            </div> : ''
+            
             )
           })}
 
@@ -311,7 +316,7 @@ localStorage.setItem('cartPage', JSON.stringify(data))
 
 
       </div>
-      <hr style={{ width: "1200px" }} />
+      <hr style={{ width: "1200px", margin: "auto" }} />
 
 
 

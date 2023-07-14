@@ -229,6 +229,11 @@ nav .wrapper {
     display: block;
     font-size: 20px;
   }
+  #Navlog{
+   
+    font-weight: bolder;
+    font-size: 26px;
+  }
   .nav-links .drop-menu {
     position: static;
     opacity: 1;
@@ -241,6 +246,7 @@ nav .wrapper {
     box-shadow: none;
     transition: all 0.3s ease;
   }
+
   #showDrop:checked ~ .drop-menu,
   #showMega:checked ~ .mega-box {
     max-height: 100%;

@@ -24,3 +24,8 @@ input.nosubmit {
     margin-top: -40px;
    font-size: 30px;
 }
+#admin{
+    position: absolute;
+    right: 75px;
+    margin-top: -28px;
+}

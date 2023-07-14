@@ -121,7 +121,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [name]);
 
   const Loading = () => {
     return (

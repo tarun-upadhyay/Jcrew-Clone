@@ -9,6 +9,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className="aSidebar">
@@ -29,11 +30,14 @@ const Sidebar = () => {
           </li>
           <li>
             <AddShoppingCartIcon className="aicon"></AddShoppingCartIcon>
-            <span>Orders</span>
+           <Link to="/admin">
+           <span>Orders</span></Link>
           </li>
           <li>
             <LocalShippingIcon className="aicon" />
-            <span>Products</span>
+           <Link to={"/admin/products"}>
+           <span>Products</span>
+           </Link>
           </li>
           <p className="atitle">USEFUL</p>
           <li>

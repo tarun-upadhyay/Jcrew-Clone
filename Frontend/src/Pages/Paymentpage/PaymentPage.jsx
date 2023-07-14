@@ -20,7 +20,7 @@ export default function Payment() {
     
       navigate("/")
     }, 4000);
-    
+    localStorage.setItem('cartPage', JSON.stringify([]))
   };
   
   return (

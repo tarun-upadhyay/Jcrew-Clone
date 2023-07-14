@@ -22,7 +22,7 @@ import {
   const Tbodydata = (data) => {
     
   const { img, title,desc,sale_price,size,_id } = data.data;
-  console.log(img,title,desc)
+
 
     return (
       <>

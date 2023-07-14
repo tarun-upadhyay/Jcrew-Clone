@@ -8,8 +8,11 @@ const [price,setPrice]=useState(0)
   let lsarray = localStorage.getItem("cartPage") || [];
 
   const getDataFromcart = ()=>{
-  let data =  lsarray;
-  data = JSON.parse(data)
+  let data =  [];
+  if(lsarray.length>0){
+    data = JSON.parse(lsarray)
+
+  }
 
 setCartData(data)
 
@@ -21,8 +24,11 @@ const deleteCart=(id)=>{
   getPrice()
 }
 const getPrice=(id)=>{
-  let data =  lsarray;
-  data = JSON.parse(data)
+  let data =  [];
+  if(lsarray.length>0){
+    data = JSON.parse(lsarray)
+
+  }
   let sum=0
  for(let i=0;i<data.length;i++){
 sum+=data[i].sale_price
