@@ -148,6 +148,7 @@ const ProductsPage = () => {
     if (x === 1) {
       setData((prev) => [...prev.sort((a, b) => b.sale_price - a.sale_price)]);
     } else {
+      
       setData((prev) => [...prev.sort((a, b) => a.sale_price - b.sale_price)]);
     }
   };
