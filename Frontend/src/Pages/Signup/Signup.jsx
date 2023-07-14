@@ -15,7 +15,7 @@ const Signup = () => {
           password,
       }
 setLoading(true)
-    await fetch("https://pronghorn-tunic.cyclic.app/api/users/register",{
+    await fetch("https://comfortable-tick-necklace.cyclic.app/user/signup",{
           method : "POST",
           headers: {
               'Content-Type': 'application/json',

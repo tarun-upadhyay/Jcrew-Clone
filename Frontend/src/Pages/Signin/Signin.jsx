@@ -15,7 +15,7 @@ const { state, dispatch } = useContext(AppContext)
           password,
       }
 
-    await fetch("https://pronghorn-tunic.cyclic.app/api/users/login",{
+    await fetch("https://comfortable-tick-necklace.cyclic.app/user/login",{
           method : "POST",
           headers: {
               'Content-Type': 'application/json',
